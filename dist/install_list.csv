@@ -1,0 +1,2 @@
+ProgramName,InstallOrder,InstallCommand,SkipFlag
+7zip,1,choco install 7zip -y,false
