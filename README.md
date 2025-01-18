@@ -10,15 +10,6 @@
 
 - Python 
 - Jetbrains toolbox
-## Instalacciones Faltantes (que deben ir al csv)
-En el csv faltan:
-- teams,
-- zoom,
-- treesieze free,
-- bulkcrap unistaller,
-- local send,
-- fork (git)
-- any desk (remote desktop)
 
 
 ## Fixes

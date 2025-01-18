@@ -1,2 +1,35 @@
 ProgramName,InstallOrder,InstallCommand,SkipFlag
-7zip,1,choco install 7zip -y,false
+7-Zip,1,winget install -e --id 7zip.7zip --location "D:\Program Files\7-Zip" --accept-source-agreements --accept-package-agreements,false
+Box,3,winget install -e --id Box.Box --accept-source-agreements --accept-package-agreements,false
+Brave Beta,4,winget install -e --id Brave.Brave.Beta --accept-source-agreements --accept-package-agreements,false
+Node.js LTS,5,winget install -e --id OpenJS.NodeJS.LTS --location "D:\Program Files\nodejs" --accept-source-agreements --accept-package-agreements,false
+DBeaver,6,winget install -e --id dbeaver.dbeaver --location "D:\Program Files\DBeaver" --accept-source-agreements --accept-package-agreements,false
+Discord,7,winget install -e --id Discord.Discord --accept-source-agreements --accept-package-agreements,false
+Dropbox,9,winget install -e --id Dropbox.Dropbox --accept-source-agreements --accept-package-agreements,false
+Git,10,winget install -e --id Git.Git --location "D:\Program Files\Git" --accept-source-agreements --accept-package-agreements,false
+Greenshot,11,winget install -e --id Greenshot.Greenshot --accept-source-agreements --accept-package-agreements,false
+HWiNFO,12,winget install -e --id REALiX.HWiNFO --accept-source-agreements --accept-package-agreements,false
+MEGASync,13,winget install -e --id Mega.MEGASync --accept-source-agreements --accept-package-agreements,false
+VS Code,14,winget install -e --id Microsoft.VisualStudioCode --location "D:\Program Files\Microsoft VS Code" --accept-source-agreements --accept-package-agreements,false
+Visual Studio 2022,15,choco install visualstudio2022community --params "--installPath D:\Program Files\Microsoft Visual Studio" -y,false
+Notepad++,16,winget install -e --id Notepad++.Notepad++ --location "D:\Program Files\Notepad++" --accept-source-agreements --accept-package-agreements,false
+OBS Studio,17,winget install -e --id OBSProject.OBSStudio --accept-source-agreements --accept-package-agreements,false
+PotPlayer,18,winget install -e --id Daum.PotPlayer --accept-source-agreements --accept-package-agreements,false
+PowerToys,19,choco install powertoys --params "/DIR=D:\Program Files\PowerToys" -y,false
+SpeedCrunch,21,winget install -e --id SpeedCrunch.SpeedCrunch --accept-source-agreements --accept-package-agreements,false
+TortoiseGit,22,winget install -e --id TortoiseGit.TortoiseGit --location "D:\Program Files\TortoiseGit" --accept-source-agreements --accept-package-agreements,false
+WezTerm,23,winget install -e --id wez.wezterm --accept-source-agreements --accept-package-agreements,false
+WinMerge,24,winget install -e --id WinMerge.WinMerge --location "D:\Program Files\WinMerge" --accept-source-agreements --accept-package-agreements,false
+Postman,25,winget install -e --id Postman.Postman --accept-source-agreements --accept-package-agreements,false
+Chrome,26,winget install -e --id Google.Chrome --accept-source-agreements --accept-package-agreements,false
+ONLYOFFICE,27,winget install -e --id ONLYOFFICE.DesktopEditors --location "D:\Program Files\ONLYOFFICE" --accept-source-agreements --accept-package-agreements,false
+WhatsApp,28,winget install -e --id WhatsApp.WhatsApp --accept-source-agreements --accept-package-agreements,false
+Telegram,29,winget install -e --id Telegram.TelegramDesktop --accept-source-agreements --accept-package-agreements,false
+Slack,30,winget install -e --id SlackTechnologies.Slack --accept-source-agreements --accept-package-agreements,false
+Microsoft Teams,31,winget install -e --id Microsoft.Teams --accept-source-agreements --accept-package-agreements,false
+Zoom,32,winget install -e --id Zoom.Zoom --accept-source-agreements --accept-package-agreements,false
+TreeSize Free,33,winget install -e --id JAMSoftware.TreeSize.Free --location "D:\Program Files\TreeSize Free" --accept-source-agreements --accept-package-agreements,false
+Bulk Crap Uninstaller,34,winget install -e --id Klocman.BulkCrapUninstaller --location "D:\Program Files\BCUninstaller" --accept-source-agreements --accept-package-agreements,false
+LocalSend,35,winget install -e --id LocalSend.LocalSend --accept-source-agreements --accept-package-agreements,false
+Fork,36,winget install -e --id Fork.Fork --location "D:\Program Files\Fork" --accept-source-agreements --accept-package-agreements,false
+AnyDesk,37,winget install -e --id AnyDeskSoftwareGmbH.AnyDesk --accept-source-agreements --accept-package-agreements,false
