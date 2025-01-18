@@ -114,6 +114,7 @@ def run_command(command):
         print(f"Detalles del error: {str(e)}")
         return False
 
+
 def set_execution_policy():
     command = "powershell -Command Set-ExecutionPolicy AllSigned -Force"
     return run_command(command)
@@ -171,15 +172,18 @@ def install_from_csv(csv_file):
 
             for row in programs:
                 if row['SkipFlag'].strip().lower() == 'true':
-                    print(f"Saltando la instalación de {row['ProgramName']} según la configuración.")
+                    print(
+                        f"Saltando la instalación de {row['ProgramName']} según la configuración.")
                     continue
 
-                print(f"\nIniciando instalación de {row['ProgramName']} (Orden: {row['InstallOrder']})...")
+                print(
+                    f"\nIniciando instalación de {row['ProgramName']} (Orden: {row['InstallOrder']})...")
                 try:
                     if not run_command(row['InstallCommand']):
                         print(f"Error al instalar {row['ProgramName']}.")
                         print("¿Deseas continuar con las siguientes instalaciones?")
-                        choice = input("Presiona 'S' para continuar o cualquier otra tecla para detener: ")
+                        choice = input(
+                            "Presiona 'S' para continuar o cualquier otra tecla para detener: ")
                         if choice.lower() != 's':
                             print("\nProceso de instalación detenido por el usuario.")
                             input("\nPresiona Enter para volver al menú principal...")
@@ -187,7 +191,8 @@ def install_from_csv(csv_file):
                 except Exception as e:
                     print(f"Error inesperado instalando {row['ProgramName']}: {str(e)}")
                     print("¿Deseas continuar con las siguientes instalaciones?")
-                    choice = input("Presiona 'S' para continuar o cualquier otra tecla para detener: ")
+                    choice = input(
+                        "Presiona 'S' para continuar o cualquier otra tecla para detener: ")
                     if choice.lower() != 's':
                         print("\nProceso de instalación detenido por el usuario.")
                         input("\nPresiona Enter para volver al menú principal...")
@@ -200,6 +205,7 @@ def install_from_csv(csv_file):
     except Exception as e:
         print(f"\nError leyendo el archivo CSV: {str(e)}")
         input("\nPresiona Enter para volver al menú principal...")
+
 
 def setup_store_apps_location():
     try:
@@ -238,29 +244,88 @@ def setup_store_apps_location():
         return False
 
 
+def disable_web_search():
+    command = 'reg add "HKCU\\Software\\Policies\\Microsoft\\Windows\\Explorer" /v "DisableSearchBoxSuggestions" /t REG_DWORD /d "1" /f'
+    if run_command(command):
+        print("Búsqueda web en menú de inicio deshabilitada correctamente.")
+        return True
+    return False
+
+
+def restore_context_menu():
+    command = 'reg.exe add "HKCU\\Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\\InprocServer32" /f /ve'
+    if run_command(command):
+        print("Menú contextual clásico restaurado correctamente.")
+        return True
+    return False
+
+
+def enable_wsl():
+    print("\nHabilitando WSL...")
+
+    # Habilitar el Subsistema de Windows para Linux
+    command1 = 'dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart'
+    if not run_command(command1):
+        print("Error habilitando el Subsistema de Windows para Linux")
+        return False
+
+    # Habilitar la característica de Máquina Virtual
+    command2 = 'dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart'
+    if not run_command(command2):
+        print("Error habilitando la plataforma de Máquina Virtual")
+        return False
+
+    print("WSL habilitado correctamente. Es necesario reiniciar el sistema.")
+    return True
+
+
+def enable_hyperv():
+    command = 'powershell -Command "Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All"'
+    if run_command(command):
+        print("Hyper-V habilitado correctamente. Es necesario reiniciar el sistema.")
+        return True
+    return False
+
+
 def show_menu():
     while True:
         print("\n=== MENÚ PRINCIPAL ===")
         print("1. Cambiar ubicación de carpetas de usuario a unidad D:")
         print("2. Instalar programas desde CSV")
         print("3. Cambiar ubicación de aplicaciones de Store a unidad D:")
-        print("4. Salir")
+        print("4. Deshabilitar búsqueda web en menú de inicio")
+        print("5. Restaurar menú contextual clásico")
+        print("6. Habilitar WSL")
+        print("7. Habilitar Hyper-V")
+        print("8. Salir")
 
-        choice = input("\nSeleccione una opción (1-4): ")
+        choice = input("\nSeleccione una opción (1-8): ")
 
         if choice == "1":
             print("\nCambiando ubicación de carpetas...")
             change_shell_folders()
         elif choice == "2":
+            print("\nCambiando ubicación de aplicaciones de Store...")
+            setup_store_apps_location()
+        elif choice == "3":
+            print("\nDeshabilitando búsqueda web en menú de inicio...")
+            disable_web_search()
+        elif choice == "4":
+            print("\nRestaurando menú contextual clásico...")
+            restore_context_menu()
+        elif choice == "5":
+            print("\nHabilitando WSL...")
+            enable_wsl()
+        elif choice == "6":
+            print("\nHabilitando Hyper-V...")
+            enable_hyperv()
+        elif choice == "7":
             print("\nIniciando instalación de programas...")
             if check_chocolatey():
                 install_from_csv('install_list.csv')
             else:
                 print("Error en la instalación de Chocolatey.")
-        elif choice == "3":
-            print("\nCambiando ubicación de aplicaciones de Store...")
-            setup_store_apps_location()
-        elif choice == "4":
+        elif choice == "8":
             print("\nSaliendo del programa...")
             break
         else:

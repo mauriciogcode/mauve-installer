@@ -26,3 +26,10 @@ ONLYOFFICE,27,winget install -e --id ONLYOFFICE.DesktopEditors --location "D:\Pr
 WhatsApp,28,winget install -e --id WhatsApp.WhatsApp --accept-source-agreements --accept-package-agreements,false
 Telegram,29,winget install -e --id Telegram.TelegramDesktop --accept-source-agreements --accept-package-agreements,false
 Slack,30,winget install -e --id SlackTechnologies.Slack --accept-source-agreements --accept-package-agreements,false
+Microsoft Teams,31,winget install -e --id Microsoft.Teams --accept-source-agreements --accept-package-agreements,false
+Zoom,32,winget install -e --id Zoom.Zoom --accept-source-agreements --accept-package-agreements,false
+TreeSize Free,33,winget install -e --id JAMSoftware.TreeSize.Free --location "D:\Program Files\TreeSize Free" --accept-source-agreements --accept-package-agreements,false
+Bulk Crap Uninstaller,34,winget install -e --id Klocman.BulkCrapUninstaller --location "D:\Program Files\BCUninstaller" --accept-source-agreements --accept-package-agreements,false
+LocalSend,35,winget install -e --id LocalSend.LocalSend --accept-source-agreements --accept-package-agreements,false
+Fork,36,winget install -e --id Fork.Fork --location "D:\Program Files\Fork" --accept-source-agreements --accept-package-agreements,false
+AnyDesk,37,winget install -e --id AnyDeskSoftwareGmbH.AnyDesk --accept-source-agreements --accept-package-agreements,false
